@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/data/imageSource.dart';
 import 'package:hello_world/locator.dart';
-import 'package:hello_world/models/imageCube.dart';
+import 'package:hello_world/pages/column_row.dart';
+import 'package:hello_world/pages/random_word_screen.dart';
 import 'package:hello_world/services/navigation_service.dart';
 
 void main() {
@@ -21,75 +21,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Home Page'),
+      home: MyRandomWords(),
+      // MyColumnRow(
+      //   title: "My Home",
+      // ),
       navigatorKey: locator<NavigationService>()
-          .navigatorKey, // 使用GlobalKey<NavigatorState>，或取現在
+          .navigatorKey, // 使用GlobalKey<NavigatorState>
       onGenerateRoute:
           doGenerateRoute, // 以當前的RouteSettings來決定現在的頁面Route<dynamic>
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  bool layout = true;
-  List<String> imageAssets;
-  List<Widget> _list;
-
-  @override
-  void initState() {
-    super.initState();
-    imageAssets = ImageSource.assets;
-    _list = List.generate(
-        imageAssets.length,
-        (index) => ImageCube(
-              Image.asset(imageAssets[index]),
-              sideLength: 120,
-            ));
-  }
-
-  void _transformLayout() {
-    setState(() {
-      layout = !layout;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Center(
-          child: 
-          Wrap(
-            direction: layout ? Axis.horizontal : Axis.vertical,
-            children: _list,
-          ),
-          // layout
-          //     ? Column(
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         children: _list,
-          //       )
-          //     : Row(
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         children: _list,
-          //       ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: _transformLayout,
-          tooltip: 'transform',
-          child: Icon(Icons.transform),
-        ),
-      ),
     );
   }
 }

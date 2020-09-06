@@ -11,9 +11,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  english_words: ^3.1.5
 
   cupertino_icons: ^0.1.3
   get_it: ^4.0.4
+
 
 dev_dependencies:
   flutter_test:
@@ -26,9 +28,7 @@ flutter:
 
   uses-material-design: true
   assets:
-    - assets/images/Dash.png
-    - assets/images/born-to-hot-reload.jpg
-    - assets/images/dash-facing-front.png
+    - assets/images/
   # fonts:
   #   - family: Schyler
   #     fonts:

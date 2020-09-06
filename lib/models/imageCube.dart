@@ -8,8 +8,8 @@ class ImageCube extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10.0),
-      color: Colors.grey,
+      padding: EdgeInsets.all(5.0), // 預留5pixel
+      color: Colors.blue,
       alignment: Alignment.center,
       height: sideLength ?? 100,
       width: sideLength ?? 100,
